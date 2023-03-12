@@ -20,7 +20,7 @@ class CategoryController extends Controller
         if ($validator->fails()) {
             return response()->json(['validation_errors' => $validator->errors()]);
         }
-            
+
                 $category = new Category();
                 $category->title = $request->title;
                 $category->description = $request->description;
@@ -66,7 +66,7 @@ class CategoryController extends Controller
                 'title' => 'max:255',
                 'description' => 'max:1024'
             ];
-            
+
             $validator = Validator::make($request->all(), $rules);
 
                     if ($validator->fails()) {

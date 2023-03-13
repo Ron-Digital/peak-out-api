@@ -17,4 +17,14 @@ class Comment extends Model
         'comment_text',
         'rate'
     ];
+
+    public function author_user()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function comments_event()
+    {
+        return $this->belongsTo(Event::class);
+    }
 }

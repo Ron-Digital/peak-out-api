@@ -40,4 +40,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function user_events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
+    public function user_profile()
+    {
+        return $this->hasOne(UserProfile::class);
+    }
+
+    public function user_medias(){
+        return $this->belongsTo(Media::class, 'rs_profile_picture');
+    }
 }

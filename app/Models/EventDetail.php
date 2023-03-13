@@ -23,4 +23,9 @@ class EventDetail extends Model
         'price',
         'started_at'
     ];
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
 }

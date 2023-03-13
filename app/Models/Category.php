@@ -15,4 +15,14 @@ class Category extends Model
         'title',
         'description',
     ];
+
+    public function category_events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
+    public function user_categories()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

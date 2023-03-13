@@ -15,4 +15,6 @@ class Media extends Model
         'filename',
         'filepath',
     ];
+
+    
 }

@@ -23,6 +23,6 @@ class Category extends Model
 
     public function user_categories()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(UserProfile::class);
     }
 }

@@ -42,9 +42,6 @@ class UserController extends Controller
 
             $rules = [
                 'email' => 'email:strict|unique:users',
-                'birth_date' => 'date_format:Y-m-d|before:now',
-                'bio' => 'max:1024',
-                'avatar' => 'exists:medias,id',
                 'password' => [Password::min(6)
                                                     ->letters()
                                                     ->mixedCase()
@@ -59,29 +56,14 @@ class UserController extends Controller
             
             Gate::authorize('is-my-profile', $users);
         
-                if ($request->has('name')) {
-                    $users->name = $request->name;
-                }
+    
                 if ($request->has('password')) {
                     $users->password = bcrypt($request->password);
                 }
                 if ($request->has('email')) {
                     $users->email = $request->email;
                 }
-                if ($request->has('birth_date')) {
-                    $users->birth_date = $request->birth_date;
-                }
-                if ($request->has('bio')) {
-                    $users->bio = $request->bio;
-                }
-                if ($request->has('gender')) {
-                    $users->gender = $request->gender;
-                }
-                if ($request->has('avatar')) {
-                    $users->avatar = $request->avatar;
-                }
                 
-
                 $users -> save();
 
                 return response()->json([

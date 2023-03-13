@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('user_name');
-            $table->enum('status',['person','community']);
-            $table->text('biography');
-            $table->double('average_rate');
-            $table->string('phone_number');
-            $table->enum('gender', ['male','female']);
-            $table->foreignId('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('user_name')->nullable();
+            $table->enum('status',['person','community'])->nullable();
+            $table->text('biography')->nullable();
+            $table->double('average_rate')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->enum('gender', ['male','female'])->nullable();
+            $table->foreignId('category_id')->nullable()->references('id')->on('categories')->onUpdate('set null')->onDelete('set null');
             $table->timestamps();
         });
     }

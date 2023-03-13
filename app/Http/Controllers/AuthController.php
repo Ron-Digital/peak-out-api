@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -40,7 +41,10 @@ class AuthController extends Controller
                 'password' => bcrypt($request->password),
             ]);
 
-            $user->user_profile_id = $user->id;
+            $user_profile = new UserProfile();
+            $user_profile->save();
+
+            $user->user_profile_id = $user_profile->id;
             $user->save();
 
 

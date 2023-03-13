@@ -11,7 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('rs_profile_pictures', function (Blueprint $table) {
+            $table->foreignId('uploader_user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('media_id')->references('id')->on('medias')->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**
@@ -19,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('rs_profile_pictures');
     }
 };

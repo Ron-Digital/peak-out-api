@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('medias', function (Blueprint $table) {
             $table->id();
+            $table->string('filename');
+            $table->string('filepath');
             $table->timestamps();
         });
     }
